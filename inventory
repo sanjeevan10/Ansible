@@ -1,0 +1,2 @@
+db_and_web_server1 ansible_host=172.17.0.3 ansible_user=test ansbile_pass=test
+db_and_web_server2 ansible_host=172.17.0.4 ansible_user=test ansible_pass=test
