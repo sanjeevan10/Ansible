@@ -1,11 +1,10 @@
 import os
-from flask import Flask,render_template,request
-from flask_mysqldb import MySQL      # For newer versions of flask-mysql 
-# from flaskext.mysql import MySQL   # For older versions of flask-mysql
+from flask import Flask
+from flask_mysqldb import MySQL     
 app = Flask(__name__)
 
 
-
+""" 
 # mysql_database_host = 'MYSQL_DATABASE_HOST' in os.environ and os.environ['MYSQL_DATABASE_HOST'] or  'localhost'
 
 # MySQL configurations
@@ -34,7 +33,7 @@ def hello():
 #       result.append(row[0])
 #       row = cursor.fetchone()
 
-#     return ",".join(result)
+#     return ",".join(result) """
 
 if __name__ == "__main__":
     app.run()
