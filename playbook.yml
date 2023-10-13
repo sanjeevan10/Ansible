@@ -28,6 +28,7 @@
       when: reboot_required_file.stat.exists
 
     - name: Install all required dependencies
+      become: yes
       apt:
         pkg:
           - python3
