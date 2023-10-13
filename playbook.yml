@@ -65,6 +65,8 @@
         priv: '*.*:ALL'
         state: present
         host: '%'
+        login_unix_socket: /var/run/mysqld/mysqld.sock
+
     
     - name: Install Python Flask dependency
       pip:
