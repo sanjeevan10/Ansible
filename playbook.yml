@@ -80,7 +80,6 @@
       with_items:
         - flask
         - flask-mysql
-        - flask-mysqldb
 
     - name: Copy source code
       copy: src=app.py dest=/opt/app.py
