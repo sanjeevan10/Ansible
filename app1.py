@@ -1,7 +1,7 @@
 import os
 from flask import Flask
-from flask_sqldb import MySQL      # For newer versions of flask-mysql 
-# from flask.ext.mysql import MySQL   # For older versions of flask-mysql
+#from flask_sqldb import MySQL      # For newer versions of flask-mysql 
+from flaskext.mysql import MySQL   # For older versions of flask-mysql
 app = Flask(__name__)
 
 
@@ -13,9 +13,9 @@ app.config['MYSQL_DATABASE_USER'] = 'db_user'
 app.config['MYSQL_DATABASE_PASSWORD'] = 'Passw0rd'
 app.config['MYSQL_DATABASE_DB'] = 'employee_db'
 app.config['MYSQL_DATABASE_HOST'] = 'localhost' # mysql_database_host
-mysql = MySQL(app)
+mysql = init_app(app)
 
-cursor = mysql.connection.cursor()
+cursor = mysql.getd_db().cursor()
 
 @app.route("/")
 def main():
