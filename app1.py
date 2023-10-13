@@ -16,13 +16,13 @@ mysql = MySQL(app)
 
 cursor = mysql.connection.cursor()
 
-@app.route("/")
+""" @app.route("/")
 def main():
     return "Welcome!"
 
 @app.route('/how are you')
 def hello():
-    return 'I am good, how about you?'
+    return 'I am good, how about you?' """
 
 # @app.route('/read from database')
 # def read():
