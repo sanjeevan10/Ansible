@@ -40,6 +40,7 @@
           - build-essential
           - python3-pip
           - python3-mysqldb
+          - default-libmysqlclient-dev
         state: present
       
     - name: Install mySQL server
@@ -81,6 +82,7 @@
       with_items:
         - flask
         - flask-mysql
+        - flask-mysqldb
 
     - name: Copy source code
       copy: src=app.py dest=/opt/app.py
