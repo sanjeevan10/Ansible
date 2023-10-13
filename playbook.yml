@@ -3,9 +3,9 @@
   tasks:
     - name: Update apt packages
       apt:
-        upgrade: yes
-        update_cache: yes
-        
+        upgrade: "yes"
+        update_cache: true
+
     - name: Install all required dependencies
       apt: name={{ item }} state=installed
       with_items:
