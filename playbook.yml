@@ -39,7 +39,7 @@
         state: present
       
     - name: Install mySQL server
-    become: yes
+      become: yes
       apt:
         pkg:
           - mysql-server
