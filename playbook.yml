@@ -36,6 +36,7 @@
           - python3-dev
           - build-essential
           - python3-pip
+          - python3-mysqldb
         state: present
       
     - name: Install mySQL server
