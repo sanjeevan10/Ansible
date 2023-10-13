@@ -37,7 +37,7 @@
     
     - name: Install Python Flask dependency
       pip:
-        name: "{{ name }}"
+        name: "{{ item }}"
         state: present
       with_names:
         - flask
