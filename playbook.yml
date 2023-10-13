@@ -1,11 +1,31 @@
 - name: Deploy a a web application
   hosts: db_and_web_server1, db_and_web_server2
   tasks:
-    - name: Update apt packages
+    - name: Update apt repo and chache
       become: yes
       apt:
-        upgrade: "yes"
         update_cache: true
+        force_apt_get: true
+        cache_valid_time: 3600
+    
+    - name: Upgrade all packages
+      become: yes
+      apt: 
+        upgrade: "dist"
+        force_apt_get: true
+
+    - name: Check if a reboot is needed
+      register: reboot_required_file
+      stat: path=/var/run/rwboot_required_file get_md5=no
+    - name: Reboot the box if kernel updated
+      reboot:
+        msg: "Reboot initiated by Ansible for kernel updates"
+        connect_timeout: 5
+        reboot_timeout: 300
+        pre_reboot_delay: 0
+        post_reboot_delay: 30
+        test_command: uptime
+      when: reboot_required_file.stat.exists
 
     - name: Install all required dependencies
       apt: name={{ item }} state=installed
