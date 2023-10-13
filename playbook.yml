@@ -1,6 +1,11 @@
 - name: Deploy a a web application
   hosts: db_and_web_server1, db_and_web_server2
   tasks:
+    - name: Update apt packages
+      apt:
+        upgrade: yes
+        update_cache: yes
+        
     - name: Install all required dependencies
       apt: name={{ item }} state=installed
       with_items:
