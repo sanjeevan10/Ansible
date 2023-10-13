@@ -39,7 +39,7 @@
       pip:
         name: "{{ item }}"
         state: present
-      with_names:
+      with_items:
         - flask
         - flask-mysql
 
