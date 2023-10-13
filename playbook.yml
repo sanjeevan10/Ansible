@@ -12,7 +12,7 @@
       
     - name: Install mySQL server
       apt: name={{ item }} state=installed
-      with_item:
+      with_items:
         - mysql-server
         - mysql-client
     
