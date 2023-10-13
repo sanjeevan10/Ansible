@@ -39,10 +39,11 @@
         state: present
       
     - name: Install mySQL server
-      apt: name={{ item }} state=installed
-      with_items:
-        - mysql-server
-        - mysql-client
+    become: yes
+      apt:
+        pkg:
+          - mysql-server
+          - mysql-client
     
     - name: Start database service
       service: 
