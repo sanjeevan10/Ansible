@@ -1,5 +1,8 @@
 - name: Deploy a a web application
   hosts: db_and_web_server1, db_and_web_server2
+  become: yes
+  vars:
+    mysql_root_pwd: Doc9ment
   tasks:
     - name: Update apt repo and chache
       become: yes
@@ -47,10 +50,10 @@
           - mysql-client
     
     - name: Start database service
-      service: 
-        name: mysql
-        state: started
-        enabled: yes
+      shell: "service mysql start"
+
+    - name: ensure mysql is enabled to run on startup
+      service: name=mysql state=started enabled=true
 
     - name: Create application database
       become: yes
@@ -64,6 +67,8 @@
         login_unix_socket: /var/run/mysqld/mysqld.sock
         name: db_user
         password: Passw0rd
+        login_user: root
+        login_password: Passw0rd
         priv: '*.*:ALL'
         host: '%'
         state: present
