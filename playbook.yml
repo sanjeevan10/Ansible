@@ -48,6 +48,7 @@
         pkg:
           - mysql-server
           - mysql-client
+          - pkg-config
     
     - name: Start database service
       shell: "service mysql start"
