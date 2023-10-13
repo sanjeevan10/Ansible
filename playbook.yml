@@ -2,6 +2,7 @@
   hosts: db_and_web_server1, db_and_web_server2
   tasks:
     - name: Update apt packages
+      become: yes
       apt:
         upgrade: "yes"
         update_cache: true
