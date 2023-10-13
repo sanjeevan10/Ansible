@@ -1,5 +1,5 @@
 import os
-from flask import Flask
+from flask import Flask,render_template,request
 from flask_mysqldb import MySQL      # For newer versions of flask-mysql 
 # from flaskext.mysql import MySQL   # For older versions of flask-mysql
 app = Flask(__name__)
@@ -9,10 +9,10 @@ app = Flask(__name__)
 # mysql_database_host = 'MYSQL_DATABASE_HOST' in os.environ and os.environ['MYSQL_DATABASE_HOST'] or  'localhost'
 
 # MySQL configurations
-app.config['MYSQL_DATABASE_USER'] = 'db_user'
-app.config['MYSQL_DATABASE_PASSWORD'] = 'Passw0rd'
-app.config['MYSQL_DATABASE_DB'] = 'employee_db'
-app.config['MYSQL_DATABASE_HOST'] = 'localhost' # mysql_database_host
+app.config['MYSQL_USER'] = 'db_user'
+app.config['MYSQL_PASSWORD'] = 'Passw0rd'
+app.config['MYSQL_DB'] = 'employee_db'
+app.config['MYSQL_HOST'] = 'localhost' # mysql_database_host
 mysql = MySQL(app)
 
 cursor = mysql.connection.cursor()
