@@ -30,11 +30,11 @@
     - name: Install all required dependencies
       apt:
         pkg:
-          - python
-          - python-setuptools
-          - python-dev
+          - python3
+          - python3-setuptools
+          - python3-dev
           - build-essential
-          - python-pip
+          - python3-pip
         state: present
       
     - name: Install mySQL server
