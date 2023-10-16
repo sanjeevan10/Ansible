@@ -33,12 +33,12 @@
       become: yes
       apt:
         pkg:
-          - python
-          - python-setuptools
-          - python-dev
+          - python3
+          - python3-setuptools
+          - python3-dev
           - build-essential
-          - python-pip
-          - python-mysqldb
+          - python3-pip
+          - python3-mysqldb
           - default-libmysqlclient-dev
           #- python3-virtualenv
         state: present
@@ -89,7 +89,8 @@
         # - virtualenv
         - flask
         - flask-mysql
-        # - flask-mysqldb
+        - mysql-connector-python
+        - flask-mysqldb
 
     - name: Copy source code
       copy: src=app.py dest=/opt/app.py
