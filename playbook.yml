@@ -78,7 +78,7 @@
     
     - name: Install pip3
       pip:
-        name:pip
+        name: pip
         extra_args: --upgrade
         executable: pip3
 
