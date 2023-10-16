@@ -8,7 +8,7 @@ mysql_database_host = 'MYSQL_DATABASE_HOST' in os.environ and os.environ['MYSQL_
 
 # MySQL Configuration
 db = mysql.connector.connect(
-    host="mysql_database_host",
+    host="localhost",
     user="db_user",
     password="Passw0rd",
     database="employee_db"
