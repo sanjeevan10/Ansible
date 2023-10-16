@@ -12,7 +12,6 @@
         cache_valid_time: 3600
     
     - name: Upgrade all packages
-      become: yes
       apt: 
         upgrade: "dist"
         force_apt_get: true
@@ -34,14 +33,14 @@
       become: yes
       apt:
         pkg:
-          - python3
-          - python3-setuptools
-          - python3-dev
+          - python
+          - python-setuptools
+          - python-dev
           - build-essential
-          - python3-pip
-          - python3-mysqldb
+          - python-pip
+          - python-mysqldb
           - default-libmysqlclient-dev
-          - python3-virtualenv
+          #- python3-virtualenv
         state: present
       
     - name: Install mySQL server
@@ -89,8 +88,8 @@
       with_items:
         # - virtualenv
         - flask
-        # - flask-mysql
-        - flask-mysqldb
+        - flask-mysql
+        # - flask-mysqldb
 
     - name: Copy source code
       copy: src=app.py dest=/opt/app.py
