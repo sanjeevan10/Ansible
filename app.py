@@ -17,26 +17,24 @@ cursor = db.cursor()
 
 # Create a table if not exists
 cursor.execute("CREATE TABLE IF NOT EXISTS users (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255))")
+@app.route("/")
+def main():
+    return "Welcome!"
 
-@app.route('/')
-def index():
-    # Fetch all users from the database
-    cursor.execute("SELECT * FROM users")
-    users = cursor.fetchall()
-    return render_template('index.html', users=users)
+@app.route('/how are you')
+def hello():
+    return 'I am good, how about you?'
 
-@app.route('/add', methods=['POST'])
-def add_user():
-    # Get user name from the form
-    name = request.form['name']
+@app.route('/read from database')
+def read():
+    cursor.execute("SELECT * FROM employees")
+    row = cursor.fetchone()
+    result = []
+    while row is not None:
+      result.append(row[0])
+      row = cursor.fetchone()
 
-    # Insert user into the database
-    cursor.execute("INSERT INTO users (name) VALUES (%s)", (name,))
-    db.commit()
-
-    # Redirect to the home page
-    return redirect(url_for('index'))
-
+    return ",".join(result)
 
 if __name__ == '__main__':
     app.run(debug=True)
