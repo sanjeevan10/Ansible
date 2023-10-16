@@ -17,7 +17,7 @@ db_config = {
 # Create a table if not exists
 
 
-@app.route("/",methods=['GET','POST'])
+@app.route("/", methods=['POST'])
 def index():
 
     connection = mysql.connector.connect(db_config**)
