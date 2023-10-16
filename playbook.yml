@@ -94,7 +94,6 @@
 
     - name: Copy source code
       copy: src=app.py dest=/opt/app.py
-      #copy: src=app1.py dest=/opt/app1.py
 
     - name: Start Web Server
       shell: FLASK_APP=/opt/app.py nohup flask run --host=0.0.0.0 &
