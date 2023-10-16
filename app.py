@@ -19,7 +19,8 @@ db_config = {
 
 @app.route("/",methods=['GET','POST'])
 def index():
-    connection = mysql.connector.connect(db_config)
+
+    connection = mysql.connector.connect(db_config**)
     cursor = connection.cursor()
     cursor.execute("CREATE TABLE IF NOT EXISTS users (id INT AUTO_INCREMENT PRIMARY KEY, username VARCHAR(255), email VARCHAR(255))")
     
