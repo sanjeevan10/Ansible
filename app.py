@@ -23,7 +23,7 @@ def submit():
     username = request.form['username']
     email = request.form['email']
 
-    connection = mysql.connector.connect(db_config**)
+    connection = mysql.connector.connect(**db_config)
     cursor = connection.cursor()
     cursor.execute("CREATE TABLE IF NOT EXISTS users (id INT AUTO_INCREMENT PRIMARY KEY, username VARCHAR(255), email VARCHAR(255))")
     
