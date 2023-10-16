@@ -94,6 +94,11 @@
 
     - name: Copy source code
       copy: src=app.py dest=/opt/app.py
+    
+    - name: Creates directory
+      file:
+        path: /opt/templates
+        state: directory
 
     - name: Copy source code
       copy: src=./templates/index.html dest=/opt/templates/index.html
