@@ -14,27 +14,25 @@ db_config = {
     'database': 'employee_db'  
 }
 
-@app.route('/')
-def home():
+@app.route('/',methods=['GET','POST'])
+def index():
+    if request.method == 'POST':
+        username = request.form['username']
+        email = request.form['email']
+
+        connection = mysql.connector.connect(**db_config)
+        cursor = connection.cursor()
+        cursor.execute("CREATE TABLE IF NOT EXISTS users (id INT AUTO_INCREMENT PRIMARY KEY, username VARCHAR(255), email VARCHAR(255))")
+    
+
+        cursor.execute("INSERT INTO users(username,email) VALUES(%S,%S)", (username,email))
+        connection.commit()
+
+        connection.close()
+        return "success"
+    
+
     return render_template('index.html')  
-
-@app.route("/submit", methods=['POST'])
-def submit():
-    username = request.form['username']
-    email = request.form['email']
-
-    connection = mysql.connector.connect(**db_config)
-    cursor = connection.cursor()
-    cursor.execute("CREATE TABLE IF NOT EXISTS users (id INT AUTO_INCREMENT PRIMARY KEY, username VARCHAR(255), email VARCHAR(255))")
-    
-
-
-    cursor.execute("INSERT INTO users(username,email) VALUES(%S,%S)", (username,email))
-    connection.commit()
-
-    connection.close()
-    return "success"
-    
 
 
 @app.route('/how are you')
