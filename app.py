@@ -15,24 +15,24 @@ db = mysql.connector.connect(
 )
 cursor = db.cursor()
 
-@app.route('/')
-def index():
-    # Fetch all users from the database
-    cursor.execute("SELECT * FROM users")
-    users = cursor.fetchall()
-    return render_template('index.html', users=users)
+@app.route("/")
+def main():
+    return "Welcome!"
 
-@app.route('/add', methods=['POST'])
-def add_user():
-    # Get user name from the form
-    name = request.form['name']
+@app.route('/how are you')
+def hello():
+    return 'I am good, how about you?'
 
-    # Insert user into the database
-    cursor.execute("INSERT INTO users (name) VALUES (%s)", (name,))
-    db.commit()
+@app.route('/read from database')
+def read():
+    cursor.execute("SELECT * FROM employees")
+    row = cursor.fetchone()
+    result = []
+    while row is not None:
+      result.append(row[0])
+      row = cursor.fetchone()
 
-    # Redirect to the home page
-    return redirect(url_for('index'))
+    return ",".join(result)
 
 if __name__ == '__main__':
     app.run(debug=True)
