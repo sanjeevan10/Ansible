@@ -1,6 +1,6 @@
 import os
 from flask import Flask
-from flask_mysqldb import MySQL     # For newer versions of flask-mysql 
+from flaskext.mysql import MySQL     # For newer versions of flask-mysql 
 # from flask.ext.mysql import MySQL   # For older versions of flask-mysql
 app = Flask(__name__)
 
@@ -21,7 +21,7 @@ cursor = conn.cursor()
 
 @app.route("/")
 def main():
-    return "Welcome1!"
+    return "Welcome!"
 
 @app.route('/how are you')
 def hello():
