@@ -41,6 +41,7 @@
           - python3-pip
           - python3-mysqldb
           - default-libmysqlclient-dev
+          - python3-virtualenv
         state: present
       
     - name: Install mySQL server
@@ -75,14 +76,20 @@
         host: '%'
         state: present
     
+    - name: Install pip3
+      pip:
+        name:pip
+        extra_args: --upgrade
+        executable: pip3
+
     - name: Install Python Flask dependency
       pip3:
         name: "{{ item }}"
         state: present
       with_items:
-        - virtualeng
+        # - virtualenv
         - flask
-        - flask-mysql
+        # - flask-mysql
         - flask-mysqldb
 
     - name: Copy source code
