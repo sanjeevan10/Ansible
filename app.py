@@ -7,19 +7,33 @@ app = Flask(__name__)
 mysql_database_host = 'MYSQL_DATABASE_HOST' in os.environ and os.environ['MYSQL_DATABASE_HOST'] or  'localhost'
 
 # MySQL Configuration
-db = mysql.connector.connect(
-    host="localhost",
-    user="db_user",
-    password="Passw0rd",
-    database="employee_db"
-)
-cursor = db.cursor()
+db_config = {
+    'host': 'localhost',
+    'user': 'db_user',
+    'password': 'Passw0rd',
+    'database': 'employee_db'  
+}
 
 # Create a table if not exists
-# cursor.execute("CREATE TABLE IF NOT EXISTS employees (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255))")
-@app.route("/")
+
+
+@app.route("/",methods=['GET','POST'])
 def index():
-    return render_template('index.html')
+    connection = mysql.connector.connect(db_config)
+    cursor = connection.cursor()
+    cursor.execute("CREATE TABLE IF NOT EXISTS users (id INT AUTO_INCREMENT PRIMARY KEY, username VARCHAR(255), email VARCHAR(255))")
+    
+    if request.method == 'POST'
+        username = request.form['username']
+        email = request.form['email']
+
+        cursor.execute("INSERT INTO users(username,email) VALUES(%S,%S)", (username,email))
+        connection.commit()
+
+        connection.close()
+        return "success"
+    
+    return render_template('index.html')  
 
 @app.route('/how are you')
 def hello():
