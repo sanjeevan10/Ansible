@@ -76,10 +76,11 @@
         state: present
     
     - name: Install Python Flask dependency
-      pip:
+      pip3:
         name: "{{ item }}"
         state: present
       with_items:
+        - virtualeng
         - flask
         - flask-mysql
         - flask-mysqldb
