@@ -16,10 +16,10 @@ db = mysql.connector.connect(
 cursor = db.cursor()
 
 # Create a table if not exists
-# cursor.execute("CREATE TABLE IF NOT EXISTS employees (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255))")
+cursor.execute("CREATE TABLE IF NOT EXISTS users (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255))")
 @app.route("/")
-def index():
-    return render_template('index.html')
+def main():
+    return "Welcome!"
 
 @app.route('/how are you')
 def hello():
